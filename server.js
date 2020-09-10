@@ -17,6 +17,7 @@ app.use(routes);
 
 
 // Connect to the Mongo DB
+// ready to commit 
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist",
   {
