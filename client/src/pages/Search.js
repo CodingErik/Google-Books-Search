@@ -17,7 +17,7 @@ function Search() {
 
   function loadBooks() {
     API.getBooks()
-      .then(res => 
+      .then(res =>
         setBooks(res.data)
       )
       .catch(err => console.log(err));
@@ -31,7 +31,7 @@ function Search() {
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setFormObject({...formObject, [name]: value})
+    setFormObject({ ...formObject, [name]: value })
   };
 
   function handleFormSubmit(event) {
@@ -47,21 +47,21 @@ function Search() {
     }
   };
 
-    return (
-      <Container fluid>
-        <Row>
-          <Col size="md-6">
-            <Jumbotron>
-              <h1>(React) Google Books Search</h1>
-              <h3>Search for and Save Books of Interest</h3>
-            </Jumbotron>
-            <form>
-              <Input
-                onChange={handleInputChange}
-                name="title"
-                placeholder="Enter a title to search .... "
-              />
-              {/* <Input
+  return (
+    <Container fluid>
+      <Row>
+        <Col size="md-6 sm-12">
+          <Jumbotron>
+            <h1>(React) Google Books Search</h1>
+            <h3>Search for and Save Books of Interest</h3>
+          </Jumbotron>
+          <form>
+            <Input
+              onChange={handleInputChange}
+              name="title"
+              placeholder="Enter a title to search .... "
+            />
+            {/* <Input
                 onChange={handleInputChange}
                 name="author"
                 placeholder="Author (required)"
@@ -71,18 +71,39 @@ function Search() {
                 name="synopsis"
                 placeholder="Synopsis (Optional)"
               /> */}
-              <FormBtn
-                // disabled={!(formObject.author && formObject.title)}
-                onClick={handleFormSubmit}
-              >
-                Submit Book
+            <FormBtn
+              // disabled={!(formObject.author && formObject.title)}
+              onClick={handleFormSubmit}
+            >
+              Submit Book
               </FormBtn>
-            </form>
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
+          </form>
+        </Col>
+        <Col size="md-6 sm-12">
+          <Jumbotron>
+            <h1>Books On My List</h1>
+          </Jumbotron>
+          {books.length ? (
+            <List>
+              {books.map(book => (
+                <ListItem key={book._id}>
+                  <Link to={"/books/" + book._id}>
+                    <strong>
+                      {book.title} by {book.author}
+                    </strong>
+                  </Link>
+                  <DeleteBtn onClick={() => deleteBook(book._id)} />
+                </ListItem>
+              ))}
+            </List>
+          ) : (
+              <h3>No Results to Display</h3>
+            )}
+        </Col>
+      </Row>
+    </Container>
+  );
+}
 
 
 export default Search;
