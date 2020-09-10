@@ -59,9 +59,9 @@ function Search() {
               <Input
                 onChange={handleInputChange}
                 name="title"
-                placeholder="Title (required)"
+                placeholder="Enter a title to search .... "
               />
-              <Input
+              {/* <Input
                 onChange={handleInputChange}
                 name="author"
                 placeholder="Author (required)"
@@ -70,9 +70,9 @@ function Search() {
                 onChange={handleInputChange}
                 name="synopsis"
                 placeholder="Synopsis (Optional)"
-              />
+              /> */}
               <FormBtn
-                disabled={!(formObject.author && formObject.title)}
+                // disabled={!(formObject.author && formObject.title)}
                 onClick={handleFormSubmit}
               >
                 Submit Book
