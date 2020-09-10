@@ -15,7 +15,7 @@ function Saved() {
                     <Jumbotron>
                         <h1>Books On My List</h1>
                     </Jumbotron>
-                    {books.length ? (
+                    {/* {books.length ? (
                         <List>
                             {books.map(book => (
                                 <ListItem key={book._id}>
@@ -30,7 +30,7 @@ function Saved() {
                         </List>
                     ) : (
                             <h3>No Results to Display</h3>
-                        )}
+                        )} */}
                 </Col>
             </Row>
         </Container>

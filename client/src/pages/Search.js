@@ -75,14 +75,12 @@ function Search() {
               // disabled={!(formObject.author && formObject.title)}
               onClick={handleFormSubmit}
             >
-              Submit Book
+              Search
               </FormBtn>
           </form>
         </Col>
         <Col size="md-6 sm-12">
-          <Jumbotron>
-            <h1>Books On My List</h1>
-          </Jumbotron>
+            <h1>Search</h1>
           {books.length ? (
             <List>
               {books.map(book => (
