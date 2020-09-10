@@ -1,5 +1,5 @@
 import React from "react";
-import Books from "./pages/Books";
+import Search from "./pages/Search";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
 import Saved from "./pages/Saved"; 
@@ -15,9 +15,10 @@ function App() {
     <div>
       <Nav/>
         <Switch>
-        <Route exact path="/" component={Books} />
-        <Route exact path="/books" component={Books} />
+        <Route exact path="/" component={Search} />
+        <Route exact path="/books" component={Search} />
         <Route exact path="/books/:id" component={Detail} />
+        <Route exact path="/saved" component={Saved} />
         <Route exact path="/*" component={NoMatch} />
         </Switch>
     </div>
