@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
+import Button from 'react-bootstrap/Button'
 
 function Search() {
     // Setting our component's initial state
@@ -18,12 +19,13 @@ function Search() {
     // }, [])
 
 
-    function saveBooks() {
+    function saveBook(id) {
         // API.getBooks()
         //     .then(res =>
         //         setBooks(res.data)
         //     )
         //     .catch(err => console.log(err));
+        console.log('book will be saved', id)
     };
 
     // Deletes a book from the database with a given id, then reloads books from the db
@@ -32,7 +34,7 @@ function Search() {
         //     .then(res => loadBooks())
         //     .catch(err => console.log(err));
 
-        console.log('book will be deleted')
+        console.log('book will be deleted', id)
     }
 
     // Handles updating component state when the user types into the input field
@@ -83,32 +85,34 @@ function Search() {
                 </Col>
                 <Col size="md-6 sm-12">
                     <h1>Results</h1>
-                    <div>
+                    <Row>
                         {books.length ? (
                             <List>
                                 {books.map(book => (
                                     <ListItem key={book.id}>
                                         <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={book.volumeInfo.title} />
                                         <DeleteBtn onClick={() => deleteBook(book.id)} />
-                                        <Link to={"/books/" + book.id}>
-                                        </Link>
-                                        <strong className="ml-5">
+                                        <Link to={"/books/" + book.id}/>
+                                        <strong className="m-4">
                                             Title: {book.volumeInfo.title}
                                         </strong>
-                                            Author: {book.volumeInfo.authors[0]}
-                                        <p  className="mt-3" >
+                                        <strong>
+                                        Author: {book.volumeInfo.authors[0]}
+                                        </strong>
+                                        <p className="mt-3" >
                                             Description: {book.volumeInfo.description}
                                         </p>
                                         <strong>
                                             <a href={book.volumeInfo.infoLink} target="_blank"> link to book </a>
                                         </strong>
+                                        <Button  onClick={() => saveBook(book.id)} variant="outline-success">Save</Button>
                                     </ListItem>
                                 ))}
                             </List>
                         ) : (
                                 <h3>No Results to Display</h3>
                             )}
-                    </div>
+                    </Row>
                 </Col>
             </Row>
         </Container>
@@ -117,22 +121,6 @@ function Search() {
 
 export default Search;
 
-
-// {
-//     authors: ["Suzanne Collins"]
-//     description: "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature."
-//     image: "http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
-//     link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
-//     title: "The Hunger Games"
-//   }
-
-
-// *** volumeInfo
-    // - authors[0]
-    // - description
-    // - imagelinks.thumbnail
-    // - infoLink
-    // - title
 
 
 
