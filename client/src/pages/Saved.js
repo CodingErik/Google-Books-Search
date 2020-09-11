@@ -9,12 +9,16 @@ import { Input, TextArea, FormBtn } from "../components/Form";
 
 function Saved() {
   return (
-    <Container>
+    <Container fluid>
       <Row>
         <Col size="md-6 sm-12">
+          <Jumbotron>
+            <h1>(React) Google Books Search</h1>
+            <h3>Search for and Save Books of Interest</h3>
+          </Jumbotron>
           <h1>Results</h1>
           <div>
-            this is where my saved stuff will be 
+            this is where my saved stuff will be
             {/* {books.length ? (
               <List>
                 {books.map(book => (
