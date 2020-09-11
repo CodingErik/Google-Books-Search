@@ -17,21 +17,23 @@ function Search() {
     //     loadBooks()
     // }, [])
 
-    // Loads all books and sets them to books
-    // function loadBooks() {
-    //     API.getBooks()
-    //         .then(res =>
-    //             setBooks(res.data)
-    //         )
-    //         .catch(err => console.log(err));
-    // };
+
+    function saveBooks() {
+        // API.getBooks()
+        //     .then(res =>
+        //         setBooks(res.data)
+        //     )
+        //     .catch(err => console.log(err));
+    };
 
     // Deletes a book from the database with a given id, then reloads books from the db
-    // function deleteBook(id) {
-    //     API.deleteBook(id)
-    //         .then(res => loadBooks())
-    //         .catch(err => console.log(err));
-    // }
+    function deleteBook(id) {
+        // API.deleteBook(id)
+        //     .then(res => loadBooks())
+        //     .catch(err => console.log(err));
+
+        console.log('book will be deleted')
+    }
 
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
@@ -47,8 +49,8 @@ function Search() {
             API.searchTitle(formObject.search)
                 .then(res => {
                     // console.log(res.data)
-                    // console.log(res.data.items[0].volumeInfo.imagelinks.smallThumbnail)
-                    
+                    console.log(res.data.items[0].volumeInfo)
+
                     setBooks(res.data.items)
                 })
                 .catch(err => {
@@ -86,15 +88,20 @@ function Search() {
                             <List>
                                 {books.map(book => (
                                     <ListItem key={book.id}>
+                                        <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={book.volumeInfo.title} />
+                                        <DeleteBtn onClick={() => deleteBook(book.id)} />
                                         <Link to={"/books/" + book.id}>
-                                            <strong>
-                                            Author: {book.volumeInfo.authors[0]}
-                                            Description: {book.volumeInfo.description}
-                                            Author: {book.volumeInfo.authors[0]}
-                                            </strong>
-                                            {/* <img src={book.volumeInfo.imagelinks.thumbnail} alt={book.volumeInfo.title}/> */}
                                         </Link>
-                                        {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
+                                        <strong className="ml-5">
+                                            Title: {book.volumeInfo.title}
+                                        </strong>
+                                            Author: {book.volumeInfo.authors[0]}
+                                        <p  className="mt-3" >
+                                            Description: {book.volumeInfo.description}
+                                        </p>
+                                        <strong>
+                                            <a href={book.volumeInfo.infoLink} target="_blank"> link to book </a>
+                                        </strong>
                                     </ListItem>
                                 ))}
                             </List>
