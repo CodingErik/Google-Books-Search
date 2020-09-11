@@ -21,7 +21,7 @@ import axios from "axios";
 
 export default {
   searchTitle: function(query) {
-    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${SECRET_KEY}`)
+    return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${process.env.SECRET_KEY}`)
   }
 }
 
