@@ -8,6 +8,24 @@ import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 function Saved() {
+
+  const [savedBooks, setSavedBooks] = useState([]); 
+
+
+  // get all the books from the database and set them in the array 
+  // this is gonna be a route/controller I will be calling for info 
+  useEffect(() => {
+    // API.loadSavedBooks() calls the backend route 
+ 
+
+    // this should return an array of books that were saved 
+  
+    // then we set the array to the state of the page 
+  }, [])
+
+
+
+
   return (
     <Container fluid>
       <Row>
@@ -16,26 +34,18 @@ function Saved() {
             <h1>(React) Google Books Search</h1>
             <h3>Search for and Save Books of Interest</h3>
           </Jumbotron>
-          <h1>Results</h1>
-          <div>
-            this is where my saved stuff will be
-            {/* {books.length ? (
-              <List>
-                {books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <DeleteBtn onClick={() => deleteBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
+        </Col>
+        <Col size="md-6 sm-12" >
+          <h1>Saved Books</h1>
+          <Row>
+            {false ? (
+              <Col>
+              books.length
+              </Col>
             ) : (
-                <h3>No Results to Display</h3>
-              )} */}
-          </div>
+                <h3>No Saved Books to Display</h3>
+              )}
+              </Row>
         </Col>
       </Row>
     </Container>
