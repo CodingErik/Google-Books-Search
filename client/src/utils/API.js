@@ -24,7 +24,7 @@ export default {
     return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${query}&key=${process.env.REACT_APP_SECRET_KEY}`)
   },
   loadSavedBooks: function(){
-    return axios.get('api/books/saved')
+    return axios.get('api/books')
   }
 }
 

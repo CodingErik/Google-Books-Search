@@ -15,7 +15,16 @@ function Saved() {
   // get all the books from the database and set them in the array 
   // this is gonna be a route/controller I will be calling for info 
   useEffect(() => {
-    // API.loadSavedBooks() calls the backend route 
+    console.log('save page is loading')
+    API.loadSavedBooks() 
+    .then(res => {
+      console.log(res.data)
+      
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    // calls the backend route 
  
 
     // this should return an array of books that were saved 
