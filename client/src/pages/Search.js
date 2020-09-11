@@ -59,7 +59,7 @@ function Search() {
             <Row>
                 <Col size="md-6">
                     <Jumbotron>
-                        <h1></h1>
+                        <h1>(React) Google Books Search</h1>
                     </Jumbotron>
                     <form>
                         <Input
