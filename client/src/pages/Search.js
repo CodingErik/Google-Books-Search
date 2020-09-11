@@ -46,10 +46,13 @@ function Search() {
         if (formObject.search) {
             API.searchTitle(formObject.search)
                 .then(res => {
-                    console.log(res)
+                    console.log(res.data)
+                    console.log(res.data.items[0].volumeInfo.imagelinks.smallThumbnail)
+                    
+                    setBooks(res.data.items)
                 })
                 .catch(err => {
-                    console.log(err); 
+                    console.log(err);
                 })
         }
     };
@@ -82,11 +85,14 @@ function Search() {
                         {books.length ? (
                             <List>
                                 {books.map(book => (
-                                    <ListItem key={book._id}>
-                                        <Link to={"/books/" + book._id}>
+                                    <ListItem key={book.id}>
+                                        <Link to={"/books/" + book.id}>
                                             <strong>
-                                                {book.title} by {book.author}
+                                            Author: {book.volumeInfo.authors[0]}
+                                            Description: {book.volumeInfo.description}
+                                            Author: {book.volumeInfo.authors[0]}
                                             </strong>
+                                            {/* <img src={book.volumeInfo.imagelinks.thumbnail} alt={book.volumeInfo.title}/> */}
                                         </Link>
                                         {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
                                     </ListItem>
@@ -112,3 +118,15 @@ export default Search;
 //     link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
 //     title: "The Hunger Games"
 //   }
+
+
+// *** volumeInfo
+    // - authors[0]
+    // - description
+    // - imagelinks.thumbnail
+    // - infoLink
+    // - title
+
+
+
+
