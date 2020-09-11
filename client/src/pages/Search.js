@@ -13,25 +13,25 @@ function Search() {
     const [formObject, setFormObject] = useState({})
 
     // Load all books and store them with setBooks
-    useEffect(() => {
-        loadBooks()
-    }, [])
+    // useEffect(() => {
+    //     loadBooks()
+    // }, [])
 
     // Loads all books and sets them to books
-    function loadBooks() {
-        API.getBooks()
-            .then(res =>
-                setBooks(res.data)
-            )
-            .catch(err => console.log(err));
-    };
+    // function loadBooks() {
+    //     API.getBooks()
+    //         .then(res =>
+    //             setBooks(res.data)
+    //         )
+    //         .catch(err => console.log(err));
+    // };
 
     // Deletes a book from the database with a given id, then reloads books from the db
-    function deleteBook(id) {
-        API.deleteBook(id)
-            .then(res => loadBooks())
-            .catch(err => console.log(err));
-    }
+    // function deleteBook(id) {
+    //     API.deleteBook(id)
+    //         .then(res => loadBooks())
+    //         .catch(err => console.log(err));
+    // }
 
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
@@ -44,14 +44,14 @@ function Search() {
     function handleFormSubmit(event) {
         event.preventDefault();
         if (formObject.search) {
-            // API.saveBook({
-            //     title: formObject.title,
-            //     author: formObject.author,
-            //     synopsis: formObject.synopsis
-            // })
-            //     .then(res => loadBooks())
-            //     .catch(err => console.log(err));
             console.log('this is will be calling the google api')
+            API.searchTitle(formObject.search)
+                .then(res => {
+                    console.log(res)
+                })
+                .catch(err => {
+                    console.log(err); 
+                })
         }
     };
 
@@ -89,7 +89,7 @@ function Search() {
                                                 {book.title} by {book.author}
                                             </strong>
                                         </Link>
-                                        <DeleteBtn onClick={() => deleteBook(book._id)} />
+                                        {/* <DeleteBtn onClick={() => deleteBook(book._id)} /> */}
                                     </ListItem>
                                 ))}
                             </List>
@@ -103,7 +103,7 @@ function Search() {
     );
 }
 
-export default Search; 
+export default Search;
 
 
 // {
