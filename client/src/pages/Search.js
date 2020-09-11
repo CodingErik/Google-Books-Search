@@ -44,7 +44,6 @@ function Search() {
     function handleFormSubmit(event) {
         event.preventDefault();
         if (formObject.search) {
-            console.log('this is will be calling the google api')
             API.searchTitle(formObject.search)
                 .then(res => {
                     console.log(res)
