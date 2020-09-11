@@ -55,9 +55,9 @@ function Search() {
     };
 
     return (
-        <Container fluid>
+        <Container fluid >
             <Row>
-                <Col size="md-6">
+                <Col size="md-6" >
                     <Jumbotron>
                         <h1>(React) Google Books Search</h1>
                         <h3>Search for and Save Books of Interest</h3>
