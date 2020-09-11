@@ -46,8 +46,8 @@ function Search() {
         if (formObject.search) {
             API.searchTitle(formObject.search)
                 .then(res => {
-                    console.log(res.data)
-                    console.log(res.data.items[0].volumeInfo.imagelinks.smallThumbnail)
+                    // console.log(res.data)
+                    // console.log(res.data.items[0].volumeInfo.imagelinks.smallThumbnail)
                     
                     setBooks(res.data.items)
                 })
