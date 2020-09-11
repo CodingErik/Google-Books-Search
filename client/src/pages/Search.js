@@ -43,14 +43,15 @@ function Search() {
     // Then reload books from the database
     function handleFormSubmit(event) {
         event.preventDefault();
-        if (formObject.title && formObject.author) {
-            API.saveBook({
-                title: formObject.title,
-                author: formObject.author,
-                synopsis: formObject.synopsis
-            })
-                .then(res => loadBooks())
-                .catch(err => console.log(err));
+        if (formObject.search) {
+            // API.saveBook({
+            //     title: formObject.title,
+            //     author: formObject.author,
+            //     synopsis: formObject.synopsis
+            // })
+            //     .then(res => loadBooks())
+            //     .catch(err => console.log(err));
+            console.log('this is will be calling the google api')
         }
     };
 
@@ -65,11 +66,11 @@ function Search() {
                     <form>
                         <Input
                             onChange={handleInputChange}
-                            name="title"
+                            name="search"
                             placeholder="Search any book title ..."
                         />
                         <FormBtn
-                            disabled={!(formObject.author && formObject.title)}
+                            disabled={!(formObject.search)}
                             onClick={handleFormSubmit}
                         >
                             Search
@@ -103,3 +104,12 @@ function Search() {
 }
 
 export default Search; 
+
+
+// {
+//     authors: ["Suzanne Collins"]
+//     description: "Set in a dark vision of the near future, a terrifying reality TV show is taking place. Twelve boys and twelve girls are forced to appear in a live event called The Hunger Games. There is only one rule: kill or be killed. When sixteen-year-old Katniss Everdeen steps forward to take her younger sister's place in the games, she sees it as a death sentence. But Katniss has been close to death before. For her, survival is second nature."
+//     image: "http://books.google.com/books/content?id=sazytgAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"
+//     link: "http://books.google.com/books?id=sazytgAACAAJ&dq=title:The+Hunger+Games&hl=&source=gbs_api"
+//     title: "The Hunger Games"
+//   }
