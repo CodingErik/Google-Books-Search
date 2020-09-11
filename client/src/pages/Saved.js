@@ -8,10 +8,35 @@ import { List, ListItem } from "../components/List";
 import { Input, TextArea, FormBtn } from "../components/Form";
 
 function Saved() {
- return(
-   <div>this is the saved page</div>
- )
-  }
+  return (
+    <Container>
+      <Row>
+        <Col size="md-6 sm-12">
+          <h1>Results</h1>
+          <div>
+            this is where my saved stuff will be 
+            {/* {books.length ? (
+              <List>
+                {books.map(book => (
+                  <ListItem key={book._id}>
+                    <Link to={"/books/" + book._id}>
+                      <strong>
+                        {book.title} by {book.author}
+                      </strong>
+                    </Link>
+                    <DeleteBtn onClick={() => deleteBook(book._id)} />
+                  </ListItem>
+                ))}
+              </List>
+            ) : (
+                <h3>No Results to Display</h3>
+              )} */}
+          </div>
+        </Col>
+      </Row>
+    </Container>
+  )
+}
 
 
 export default Saved;
