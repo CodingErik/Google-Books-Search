@@ -1,20 +1,21 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navbar from 'react-bootstrap/Navbar'
+import Nav from 'react-bootstrap/Nav'
 
-function Nav() {
+function NavComponent() {
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-      <Link className="navbar-brand" to="/">
-        React Reading List
-</Link>
-      <Link className="navbar-brand" to="/">
-        Pupster
-</Link>
-    </nav>
+    <Navbar bg="light" expand="lg">
+      <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="mr-auto">
+          <Nav.Link href="/search">Search</Nav.Link>
+          <Nav.Link href="/saved">Saved</Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+    </Navbar>
   );
 }
 
-export default Nav;
-
-
+export default NavComponent;
