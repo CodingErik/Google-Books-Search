@@ -17,7 +17,6 @@ function Saved() {
     // console.log('book will be deleted', id)
   }
 
-
   // get all the books from the database and set them in the array 
   // this is gonna be a route/controller I will be calling for info 
   useEffect(() => {
