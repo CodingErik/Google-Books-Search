@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+import { Input, FormBtn } from "../components/Form";
 import Button from 'react-bootstrap/Button'
 
 function Search() {
@@ -86,7 +86,6 @@ function Search() {
                                 {books.map(book => (
                                     <ListItem key={book.id}>
                                         <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={book.volumeInfo.title} />
-                                        <DeleteBtn onClick={() => deleteBook(book.id)} />
                                         <Link to={"/books/" + book.id}/>
                                         <strong className="m-4">
                                             Title: {book.volumeInfo.title}
@@ -98,9 +97,9 @@ function Search() {
                                             Description: {book.volumeInfo.description}
                                         </p>
                                         <strong>
-                                            <a href={book.volumeInfo.infoLink} target="_blank"> link to book </a>
+                                            <a href={book.volumeInfo.infoLink} target="_blank" rel="noopener noreferrer"> link to book </a>
                                         </strong>
-                                        <Button  onClick={() => saveBook(book.id)} variant="outline-success">Save</Button>
+                                        <Button  onClick={() => saveBook(book.id)} variant="outline-success" className='ml-3' >Save</Button>
                                     </ListItem>
                                 ))}
                             </List>

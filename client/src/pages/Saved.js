@@ -4,35 +4,39 @@ import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../components/Grid";
-import { List, ListItem } from "../components/List";
-import { Input, TextArea, FormBtn } from "../components/Form";
+
 
 function Saved() {
 
-  const [savedBooks, setSavedBooks] = useState([]); 
+  const [saved, setSaved] = useState([]);
+
+  function deleteBook(id) {
+    // API.deleteBook(id)
+    //     .then(res => loadBooks())
+    //     .catch(err => console.log(err));
+
+    console.log('book will be deleted', id)
+}
 
 
   // get all the books from the database and set them in the array 
   // this is gonna be a route/controller I will be calling for info 
   useEffect(() => {
-    console.log('save page is loading')
-    API.loadSavedBooks() 
-    .then(res => {
-      console.log(res.data)
-      
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    // calls the backend route 
- 
-
-    // this should return an array of books that were saved 
-  
-    // then we set the array to the state of the page 
+    API.loadSavedBooks()
+      .then(res => {
+        setSaved(res.data);
+        console.log(saved)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    //todo: calls the backend route 
+    //todo: should return an array of books that were saved 
+    //todo: then we set the array to the state of the page
+    console.log(saved) 
   }, [])
 
-
+  
 
 
   return (
@@ -47,14 +51,35 @@ function Saved() {
         <Col size="md-6 sm-12" >
           <h1>Saved Books</h1>
           <Row>
-            {false ? (
-              <Col>
-              books.length
-              </Col>
+            {saved.length ? (
+
+                saved.map(book => (
+                  <Col size='sm-12' key={book._id}>
+                    <div className="mb-4 border  p-3 rounded shadow ">
+                    <img src={book.image} alt={book.title} />
+                    <DeleteBtn onClick={() => deleteBook(book._id)} />
+                    <Link to={"/books/" + book.id} />
+                    <strong className="m-4">
+                      Title: {book.title}
+                    </strong>
+                    <strong>
+                      Author: {book.author}
+                    </strong>
+                    <p className="mt-3" >
+                      Description: {book.description}
+                    </p>
+                    <strong>
+                      <a href={book.link} target="_blank" rel="noopener noreferrer"> link to book </a>
+                    </strong>
+                    </div>
+                  </Col>
+                ))
+              
             ) : (
                 <h3>No Saved Books to Display</h3>
               )}
-              </Row>
+              
+          </Row>
         </Col>
       </Row>
     </Container>
