@@ -23,13 +23,9 @@ function Search() {
             image:book.imageLinks.smallThumbnail,
             link:book.infoLink
         }
-        
-        // console.log(newBook, 'this is the book we selected');
-
         API.saveBook(newBook)
             .then(res =>
                 setSavedBook(res.data)
-                // console.log({res})
             )
             .catch(err => console.log(err));
     };
