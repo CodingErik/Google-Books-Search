@@ -23,15 +23,6 @@ function Search() {
         console.log('book will be saved', id)
     };
 
-    // Deletes a book from the database with a given id, then reloads books from the db
-    function deleteBook(id) {
-        // API.deleteBook(id)
-        //     .then(res => loadBooks())
-        //     .catch(err => console.log(err));
-
-        console.log('book will be deleted', id)
-    }
-
     // Handles updating component state when the user types into the input field
     function handleInputChange(event) {
         const { name, value } = event.target;
