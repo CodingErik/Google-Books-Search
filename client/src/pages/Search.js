@@ -15,11 +15,12 @@ function Search() {
 
 
     function saveBook(id) {
-        // API.getBooks()
-        //     .then(res =>
-        //         setBooks(res.data)
-        //     )
-        //     .catch(err => console.log(err));
+        // place book object here 
+        API.saveBook()
+            .then(res =>
+                setBooks(res.data)
+            )
+            .catch(err => console.log(err));
         console.log('book will be saved', id)
     };
 
