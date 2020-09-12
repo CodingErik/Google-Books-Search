@@ -15,11 +15,21 @@ function Search() {
 
 
     function saveBookSelection(book) {
-        // place book object here 
-        API.saveBook(book)
+        // place book object
+        let newBook = {
+            title:book.title,
+            author:book.authors[0],
+            description:book.description,
+            image:book.imageLinks.smallThumbnail,
+            link:book.infoLink
+        }
+        
+        // console.log(newBook, 'this is the book we selected');
+
+        API.saveBook(newBook)
             .then(res =>
-                // setSavedBook(res.data)
-                console.log(`this is the saved book ${res}`)
+                setSavedBook(res.data)
+                // console.log({res})
             )
             .catch(err => console.log(err));
     };
