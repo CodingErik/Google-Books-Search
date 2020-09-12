@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import DeleteBtn from "../components/DeleteBtn";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -12,16 +11,17 @@ function Search() {
     // Setting our component's initial state
     const [books, setBooks] = useState([])
     const [formObject, setFormObject] = useState({})
+    const [saveBook, setSavedBook] = useState({})
 
 
-    function saveBook(id) {
+    function saveBookSelection(book) {
         // place book object here 
-        API.saveBook()
+        API.saveBook(book)
             .then(res =>
-                setBooks(res.data)
+                // setSavedBook(res.data)
+                console.log(`this is the saved book ${res}`)
             )
             .catch(err => console.log(err));
-        console.log('book will be saved', id)
     };
 
     // Handles updating component state when the user types into the input field
@@ -38,7 +38,7 @@ function Search() {
             API.searchTitle(formObject.search)
                 .then(res => {
                     // console.log(res.data)
-                    console.log(res.data.items[0].volumeInfo)
+                    // console.log(res.data.items[0].volumeInfo)
 
                     setBooks(res.data.items)
                 })
@@ -78,12 +78,12 @@ function Search() {
                                 {books.map(book => (
                                     <ListItem key={book.id}>
                                         <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={book.volumeInfo.title} />
-                                        <Link to={"/books/" + book.id}/>
+                                        <Link to={"/books/" + book.id} />
                                         <strong className="m-4">
                                             Title: {book.volumeInfo.title}
                                         </strong>
                                         <strong>
-                                        Author: {book.volumeInfo.authors[0]}
+                                            Author: {book.volumeInfo.authors[0]}
                                         </strong>
                                         <p className="mt-3" >
                                             Description: {book.volumeInfo.description}
@@ -91,7 +91,7 @@ function Search() {
                                         <strong>
                                             <a href={book.volumeInfo.infoLink} target="_blank" rel="noopener noreferrer"> link to book </a>
                                         </strong>
-                                        <Button  onClick={() => saveBook(book.id)} variant="outline-success" className='ml-3' >Save</Button>
+                                        <Button onClick={() => saveBookSelection(book.volumeInfo)} variant="outline-success" className='ml-3' >Save</Button>
                                     </ListItem>
                                 ))}
                             </List>
