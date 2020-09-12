@@ -11,12 +11,11 @@ function Saved() {
   const [saved, setSaved] = useState([]);
 
   function deleteBook(id) {
-    // API.deleteBook(id)
-    //     .then(res => loadBooks())
-    //     .catch(err => console.log(err));
-
-    console.log('book will be deleted', id)
-}
+    API.deleteBook(id)
+      .then(res => res)
+      .catch(err => console.log(err));
+    // console.log('book will be deleted', id)
+  }
 
 
   // get all the books from the database and set them in the array 
@@ -30,13 +29,9 @@ function Saved() {
       .catch(err => {
         console.log(err)
       })
-    //todo: calls the backend route 
-    //todo: should return an array of books that were saved 
-    //todo: then we set the array to the state of the page
-    console.log(saved) 
-  }, [])
+  }, [saved])
 
-  
+
 
 
   return (
@@ -53,9 +48,9 @@ function Saved() {
           <Row>
             {saved.length ? (
 
-                saved.map(book => (
-                  <Col size='sm-12' key={book._id}>
-                    <div className="mb-4 border  p-3 rounded shadow ">
+              saved.map(book => (
+                <Col size='sm-12' key={book._id}>
+                  <div className="mb-4 border  p-3 rounded shadow ">
                     <img src={book.image} alt={book.title} />
                     <DeleteBtn onClick={() => deleteBook(book._id)} />
                     <Link to={"/books/" + book.id} />
@@ -71,14 +66,14 @@ function Saved() {
                     <strong>
                       <a href={book.link} target="_blank" rel="noopener noreferrer"> link to book </a>
                     </strong>
-                    </div>
-                  </Col>
-                ))
-              
+                  </div>
+                </Col>
+              ))
+
             ) : (
                 <h3>No Saved Books to Display</h3>
               )}
-              
+
           </Row>
         </Col>
       </Row>
