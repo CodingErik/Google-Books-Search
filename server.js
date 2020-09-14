@@ -1,8 +1,11 @@
 const express = require("express");
+// I have to set up the env in the back end to use the api key 
 require('dotenv').config(); 
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
+const socket = require('socket.io');
+
 const PORT = process.env.PORT || 3001;
 
 // Define middleware here
@@ -26,7 +29,18 @@ mongoose.connect(
   }
 );
 
+// io.on('connection', (socket) => {
+//   console.log('a user connected');
+// });
+
 // Start the API server
-app.listen(PORT, function() {
+let listen = app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+
+
+let io = socket(listen)
+
+io.on('connection', (socket) => {
+  console.log(`made a socket connection ${socket.id}`); 
+}); 
