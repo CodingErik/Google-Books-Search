@@ -97,6 +97,6 @@ After all required dependencies have been installed using the instructions in th
 
 _Return to TOC - [Table of Contents](#table-of-contents)_
 
-##Contribution
+### Contribution
 
 - Erik De Luna - Full Stack Developer
