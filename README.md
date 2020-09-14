@@ -2,7 +2,7 @@
 
 ![react](https://img.shields.io/badge/library-react.js-purple/?style=flat&logo=react)
 ![GitHub followers](https://img.shields.io/github/followers/CodingErik?logo=GitHub&style=flat)
-![GitHub language count](https://img.shields.io/github/languages/count/CodingErik/employee_directory?color=orange&logo=GitHub&style=flat)
+![GitHub language count](https://img.shields.io/github/languages/count/CodingErik/Google-Books-Search?color=orange&logo=GitHub&style=flat)
 ![npm](https://img.shields.io/npm/v/axios?color=yellow&label=axios&logo=NPM)
 ![npm](https://img.shields.io/npm/v/express?color=purple&label=express&logo=NPM)
 ![npm](https://img.shields.io/npm/v/mongoose?color=red&label=mongoose&logo=NPM)
