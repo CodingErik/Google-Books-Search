@@ -4,7 +4,7 @@ require('dotenv').config();
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
-const socket = require('socket.io');
+// const socket = require('socket.io');
 
 const PORT = process.env.PORT || 3001;
 
@@ -34,13 +34,14 @@ mongoose.connect(
 // });
 
 // Start the API server
-let listen = app.listen(PORT, function() {
+app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+
 });
 
 
-let io = socket(listen)
+// let io = socket(listen)
 
-io.on('connection', (socket) => {
-  console.log(`made a socket connection ${socket.id}`); 
-}); 
+// io.on('connection', (socket) => {
+//   console.log(`made a socket connection ${socket.id}`); 
+// }); 

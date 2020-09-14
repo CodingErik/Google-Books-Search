@@ -29,8 +29,7 @@ function Search() {
             )
             .catch(err => console.log(err));
 
-            // we need to implement socket.io so that when we save a book we also get a notification 
-            
+            // we need to implement socket.io so that when we save a book we also get a notification that
     };
 
     // Handles updating component state when the user types into the input field
@@ -44,17 +43,18 @@ function Search() {
     function handleFormSubmit(event) {
         event.preventDefault();
         if (formObject.search) {
+            // sending the title 
             API.searchTitle(formObject.search)
                 .then(res => {
                     // console.log(res.data)
                     // console.log(res.data.items[0].volumeInfo)
-
                     setBooks(res.data.items)
                 })
                 .catch(err => {
                     console.log(err);
                 })
         }
+        // console.log(formObject.search)
     };
 
     return (
