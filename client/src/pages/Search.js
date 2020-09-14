@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -13,15 +13,26 @@ function Search() {
     const [formObject, setFormObject] = useState({})
     const [saveBook, setSavedBook] = useState({})
 
+    useEffect(() => {
+        API.searchTitle("the matrix")
+            .then(res => {
+                // console.log(res.data)
+                // console.log(res.data.items[0].volumeInfo)
+                setBooks(res.data.items)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [])
 
     function saveBookSelection(book) {
         // place book object
         let newBook = {
-            title:book.title,
-            author:book.authors[0],
-            description:book.description,
-            image:book.imageLinks.smallThumbnail,
-            link:book.infoLink
+            title: book.title,
+            author: book.authors[0],
+            description: book.description,
+            image: book.imageLinks.smallThumbnail,
+            link: book.infoLink
         }
         API.saveBook(newBook)
             .then(res =>
@@ -29,7 +40,7 @@ function Search() {
             )
             .catch(err => console.log(err));
 
-            // we need to implement socket.io so that when we save a book we also get a notification that
+        // we need to implement socket.io so that when we save a book we also get a notification that
     };
 
     // Handles updating component state when the user types into the input field
