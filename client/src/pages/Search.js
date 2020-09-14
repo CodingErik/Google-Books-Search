@@ -28,6 +28,9 @@ function Search() {
                 setSavedBook(res.data)
             )
             .catch(err => console.log(err));
+
+            // we need to implement socket.io so that when we save a book we also get a notification 
+            
     };
 
     // Handles updating component state when the user types into the input field
