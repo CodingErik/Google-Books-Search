@@ -13,6 +13,7 @@ function Search() {
     const [formObject, setFormObject] = useState({})
     const [saveBook, setSavedBook] = useState({})
 
+    // on load search 
     useEffect(() => {
         API.searchTitle("the matrix")
             .then(res => {
