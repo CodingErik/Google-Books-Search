@@ -25,23 +25,12 @@ mongoose.connect(
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useCreateIndex: true,
-    useFindAndModify: false
+    useFindAndModify: true
   }
 );
-
-// io.on('connection', (socket) => {
-//   console.log('a user connected');
-// });
 
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 
 });
-
-
-// let io = socket(listen)
-
-// io.on('connection', (socket) => {
-//   console.log(`made a socket connection ${socket.id}`); 
-// }); 
