@@ -3,8 +3,7 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 
 
-// we are going to have to prop drill form the button function 
-
+// model succesful 
 function Popup(prop) {
     return (
         <>
