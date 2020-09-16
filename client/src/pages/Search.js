@@ -42,13 +42,18 @@ function Search() {
             link: book.infoLink
         }
         API.saveBook(newBook)
-            .then(res =>
-                setSavedBook(res.data),
-            )
+            .then(res =>{
+                setSavedBook(res.data)
+                
+                // this shows the modal
+                // what we wanna do is emit to the server with data and 
+                // then have the server respond with data and post
+                handleShow()
+            })
             .catch(err => console.log(err));
 
         // we need to implement socket.io so that when we save a book we also get a notification that
-        handleShow()
+        // handleShow()
     };
 
     // Handles updating component state when the user types into the input field
