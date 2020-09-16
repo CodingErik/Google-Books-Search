@@ -6,12 +6,18 @@ import { Col, Row, Container } from "../components/Grid";
 import { List, ListItem } from "../components/List";
 import { Input, FormBtn } from "../components/Form";
 import Button from 'react-bootstrap/Button'
+import Popup from '../components/Popup'; 
 
 function Search() {
     // Setting our component's initial state
     const [books, setBooks] = useState([])
     const [formObject, setFormObject] = useState({})
     const [saveBook, setSavedBook] = useState({})
+
+    //setting up modal 
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     // on load search 
     useEffect(() => {
@@ -37,11 +43,12 @@ function Search() {
         }
         API.saveBook(newBook)
             .then(res =>
-                setSavedBook(res.data)
+                setSavedBook(res.data),
             )
             .catch(err => console.log(err));
 
         // we need to implement socket.io so that when we save a book we also get a notification that
+        handleShow()
     };
 
     // Handles updating component state when the user types into the input field
@@ -69,10 +76,18 @@ function Search() {
         // console.log(formObject.search)
     };
 
+
     return (
         <Container fluid >
             <Row>
                 <Col size="md-6" >
+                    <Popup  
+                    handleShow={handleShow}  
+                    handleClose={handleClose} 
+                    show={show}
+                    saveBook={saveBook.title}
+                    />
+
                     <Jumbotron>
                         <h1>(React) Google Books Search</h1>
                         <h3>Search for and Save Books of Interest</h3>
