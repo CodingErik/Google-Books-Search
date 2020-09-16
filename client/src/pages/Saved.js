@@ -23,7 +23,6 @@ function Saved() {
     API.loadSavedBooks()
       .then(res => {
         setSaved(res.data);
-        console.log(saved)
       })
       .catch(err => {
         console.log(err)
