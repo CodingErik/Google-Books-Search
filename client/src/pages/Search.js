@@ -64,8 +64,8 @@ function Search() {
 
     // When the form is submitted, use the API.saveBook method to save the book data
     // Then reload books from the database
-    function handleFormSubmit(e) {
-        e.preventDefault();
+    function handleFormSubmit() {
+        event.preventDefault();
         if (formObject.search) {
             // sending the title 
             API.searchTitle(formObject.search)
@@ -105,7 +105,7 @@ function Search() {
                         />
                         <FormBtn
                             disabled={!(formObject.search)}
-                            onClick={handleFormSubmit(e)}
+                            onClick={handleFormSubmit}
                         >
                             Search
               </FormBtn>
