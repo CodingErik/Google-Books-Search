@@ -104,7 +104,7 @@ function Search() {
                             placeholder="Search any book title ..."
                         />
                         <FormBtn
-                            disabled={!(formObject.search)}
+//                             disabled={!(formObject.search)}
                             onClick={handleFormSubmit}
                         >
                             Search
